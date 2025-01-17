@@ -10,6 +10,9 @@
   },
   "homepage": "https://github.com/shahadathhs/generate-password/blob/main/README.md",
   "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
     "test": "jest",
     "test:w": "jest --watchAll",
     "build": "tsup",
@@ -27,12 +30,28 @@
   "license": "MIT",
   "description": "This is a simple password generator. It is suitable for generating passwords for applications, websites, and other purposes. Both in the browser and in the Node.js environment.",
   "devDependencies": {
+    "@eslint/js": "^9.18.0",
     "@types/jest": "^29.5.14",
+    "eslint": "^9.18.0",
+    "eslint-plugin-import": "^2.31.0",
+    "globals": "^15.14.0",
     "jest": "^29.7.0",
     "jest-each": "^29.7.0",
+    "prettier": "^3.4.2",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
     "tsup": "^8.3.5",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.20.0"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "sideEffects": [
+    "*.css",
+    "*.scss"
+  ],
+  "bugs": {
+    "url": "https://github.com/shahadathhs/generate-password/issues"
   }
 }

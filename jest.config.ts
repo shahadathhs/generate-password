@@ -5,7 +5,7 @@ export default {
   testMatch: ['**/**/*.test.ts'],
   moduleFileExtensions: ['js', 'ts'],
   transform: {
-    '^.+\\.ts$': 'ts-jest',
+    '^.+\\.ts$': 'ts-jest'
   },
   verbose: true,
   forceExit: true,

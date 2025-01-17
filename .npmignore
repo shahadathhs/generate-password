@@ -16,3 +16,6 @@ tsconfig.json
 tsup.config.ts
 jest.config.ts
 .gitignore
+
+.prettier.json
+eslint.config.js

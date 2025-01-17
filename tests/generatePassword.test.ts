@@ -1,7 +1,7 @@
-import { generatePassword } from "../src/functions/functions";
+import { generatePassword } from '../src/functions/functions'
 
-describe("generatePassword", () => {
-  it("should generate a password of the specified length", () => {
+describe('generatePassword', () => {
+  it('should generate a password of the specified length', () => {
     const password = generatePassword({
       length: 10,
       useNumbers: true,
@@ -9,12 +9,12 @@ describe("generatePassword", () => {
       useLowercase: true,
       useSymbols: true,
       excludeSimilarCharacters: false,
-      exclude: "",
-    });
-    expect(password).toHaveLength(10);
-  });
+      exclude: ''
+    })
+    expect(password).toHaveLength(10)
+  })
 
-  it("should generate a password with numbers", () => {
+  it('should generate a password with numbers', () => {
     const password = generatePassword({
       length: 10,
       useNumbers: true,
@@ -22,12 +22,12 @@ describe("generatePassword", () => {
       useLowercase: false,
       useSymbols: false,
       excludeSimilarCharacters: false,
-      exclude: "",
-    });
-    expect(password).toMatch(/[0-9]/);
-  });
+      exclude: ''
+    })
+    expect(password).toMatch(/[0-9]/)
+  })
 
-  it("should generate a password with uppercase characters", () => {
+  it('should generate a password with uppercase characters', () => {
     const password = generatePassword({
       length: 10,
       useNumbers: false,
@@ -35,12 +35,12 @@ describe("generatePassword", () => {
       useLowercase: false,
       useSymbols: false,
       excludeSimilarCharacters: false,
-      exclude: "",
-    });
-    expect(password).toMatch(/[A-Z]/);
-  });
+      exclude: ''
+    })
+    expect(password).toMatch(/[A-Z]/)
+  })
 
-  it("should generate a password with lowercase characters", () => {
+  it('should generate a password with lowercase characters', () => {
     const password = generatePassword({
       length: 10,
       useNumbers: false,
@@ -48,12 +48,12 @@ describe("generatePassword", () => {
       useLowercase: true,
       useSymbols: false,
       excludeSimilarCharacters: false,
-      exclude: "",
-    });
-    expect(password).toMatch(/[a-z]/);
-  });
+      exclude: ''
+    })
+    expect(password).toMatch(/[a-z]/)
+  })
 
-  it("should generate a password with symbols", () => {
+  it('should generate a password with symbols', () => {
     const password = generatePassword({
       length: 10,
       useNumbers: false,
@@ -61,12 +61,12 @@ describe("generatePassword", () => {
       useLowercase: false,
       useSymbols: true,
       excludeSimilarCharacters: false,
-      exclude: "",
-    });
-    expect(password).toMatch(/[@#$%^&*()_+=<>?/|]/);
-  });
+      exclude: ''
+    })
+    expect(password).toMatch(/[@#$%^&*()_+=<>?/|]/)
+  })
 
-  it("should exclude similar characters", () => {
+  it('should exclude similar characters', () => {
     const password = generatePassword({
       length: 10,
       useNumbers: true,
@@ -74,12 +74,12 @@ describe("generatePassword", () => {
       useLowercase: true,
       useSymbols: true,
       excludeSimilarCharacters: true,
-      exclude: "",
-    });
-    expect(password).not.toMatch(/[il1Lo0O]/);
-  });
+      exclude: ''
+    })
+    expect(password).not.toMatch(/[il1Lo0O]/)
+  })
 
-  it("should exclude characters specified in the exclude string", () => {
+  it('should exclude characters specified in the exclude string', () => {
     const password = generatePassword({
       length: 10,
       useNumbers: true,
@@ -87,12 +87,12 @@ describe("generatePassword", () => {
       useLowercase: true,
       useSymbols: true,
       excludeSimilarCharacters: false,
-      exclude: "a",
-    });
-    expect(password).not.toMatch(/[a]/);
-  });
+      exclude: 'a'
+    })
+    expect(password).not.toMatch(/[a]/)
+  })
 
-  it("should generate a password with the specified options", () => {
+  it('should generate a password with the specified options', () => {
     const password = generatePassword({
       length: 10,
       useNumbers: true,
@@ -100,8 +100,8 @@ describe("generatePassword", () => {
       useLowercase: true,
       useSymbols: true,
       excludeSimilarCharacters: false,
-      exclude: "",
-    });
-    expect(password).toMatch(/[0-9A-Za-z@#$%^&*()_+=<>?/|]/);
-  });
-});
+      exclude: ''
+    })
+    expect(password).toMatch(/[0-9A-Za-z@#$%^&*()_+=<>?/|]/)
+  })
+})
