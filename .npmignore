@@ -14,5 +14,5 @@ tests
 
 tsconfig.json
 tsup.config.ts
-jest.config.js
+jest.config.ts
 .gitignore
