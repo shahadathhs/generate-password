@@ -1,6 +1,6 @@
 import { GeneratePasswordFunctionProps } from "../types/types";
 
-export function generatePasswordWithOptions({
+export function generatePassword({
   length = 8,
   useNumbers = true,
   useUppercase = true,

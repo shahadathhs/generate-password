@@ -1,8 +1,8 @@
-import { generatePasswordWithOptions } from "../src/functions/functions";
+import { generatePassword } from "../src/functions/functions";
 
-describe("generatePasswordWithOptions", () => {
+describe("generatePassword", () => {
   it("should generate a password of the specified length", () => {
-    const password = generatePasswordWithOptions({
+    const password = generatePassword({
       length: 10,
       useNumbers: true,
       useUppercase: true,
@@ -15,7 +15,7 @@ describe("generatePasswordWithOptions", () => {
   });
 
   it("should generate a password with numbers", () => {
-    const password = generatePasswordWithOptions({
+    const password = generatePassword({
       length: 10,
       useNumbers: true,
       useUppercase: false,
@@ -28,7 +28,7 @@ describe("generatePasswordWithOptions", () => {
   });
 
   it("should generate a password with uppercase characters", () => {
-    const password = generatePasswordWithOptions({
+    const password = generatePassword({
       length: 10,
       useNumbers: false,
       useUppercase: true,
@@ -41,7 +41,7 @@ describe("generatePasswordWithOptions", () => {
   });
 
   it("should generate a password with lowercase characters", () => {
-    const password = generatePasswordWithOptions({
+    const password = generatePassword({
       length: 10,
       useNumbers: false,
       useUppercase: false,
@@ -54,7 +54,7 @@ describe("generatePasswordWithOptions", () => {
   });
 
   it("should generate a password with symbols", () => {
-    const password = generatePasswordWithOptions({
+    const password = generatePassword({
       length: 10,
       useNumbers: false,
       useUppercase: false,
@@ -67,7 +67,7 @@ describe("generatePasswordWithOptions", () => {
   });
 
   it("should exclude similar characters", () => {
-    const password = generatePasswordWithOptions({
+    const password = generatePassword({
       length: 10,
       useNumbers: true,
       useUppercase: true,
@@ -80,7 +80,7 @@ describe("generatePasswordWithOptions", () => {
   });
 
   it("should exclude characters specified in the exclude string", () => {
-    const password = generatePasswordWithOptions({
+    const password = generatePassword({
       length: 10,
       useNumbers: true,
       useUppercase: true,
@@ -93,7 +93,7 @@ describe("generatePasswordWithOptions", () => {
   });
 
   it("should generate a password with the specified options", () => {
-    const password = generatePasswordWithOptions({
+    const password = generatePassword({
       length: 10,
       useNumbers: true,
       useUppercase: true,
