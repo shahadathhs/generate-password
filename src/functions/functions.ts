@@ -7,7 +7,6 @@ export function generatePasswordWithOptions({
   useLowercase,
   useSymbols,
   excludeSimilarCharacters,
-  allowSequential,
 }: GeneratePasswordFunctionProps): string {
   const lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
   const uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -26,15 +25,6 @@ export function generatePasswordWithOptions({
     charset = charset
       .split("")
       .filter((char) => !similarChars.includes(char))
-      .join("");
-  }
-
-  if (!allowSequential) {
-    charset = charset
-      .split("")
-      .filter(
-        (char) => !charset.includes(String.fromCharCode(char.charCodeAt(0) + 1))
-      )
       .join("");
   }
 
