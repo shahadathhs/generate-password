@@ -5,4 +5,5 @@ export type GeneratePasswordFunctionProps = {
   useLowercase: boolean;
   useSymbols: boolean;
   excludeSimilarCharacters: boolean;
+  exclude: string;
 };

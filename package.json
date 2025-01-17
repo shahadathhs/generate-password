@@ -1,6 +1,6 @@
 {
   "name": "generate-password-in-client-side",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -20,7 +20,8 @@
     "generator",
     "generate",
     "password generator",
-    "password generator in client side"
+    "generate password in client side",
+    "generate password in browser"
   ],
   "author": "shahadathhs",
   "license": "MIT",

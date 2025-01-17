@@ -1,19 +1,19 @@
-# generate-password
+# generate-password-in-client-side
 
-`generate-password` is a customizable, lightweight, and secure password generator library for JavaScript and TypeScript. It allows you to generate random passwords with various options such as length, inclusion of numbers, symbols, uppercase, lowercase letters, and excluding similar characters.
+`generate-password-in-client-side` is a customizable, lightweight, and secure password generator library for JavaScript and TypeScript. It allows you to generate random passwords with various options such as length, inclusion of numbers, symbols, uppercase, lowercase letters, and excluding similar characters.
 
 ## Installation
 
 Install the package using npm or yarn:
 
 ```bash
-npm install generate-password
+npm install generate-password-in-client-side
 ```
 
 or
 
 ```bash
-yarn add generate-password
+yarn add generate-password-in-client-side
 ```
 
 ## Usage
@@ -21,13 +21,13 @@ yarn add generate-password
 ### Importing the Function
 
 ```typescript
-import { generatePasswordWithOptions } from 'generate-password';
+import { generatePasswordWithOptions } from 'generate-password-in-client-side';
 ```
 
 ### Example Usage
 
 ```typescript
-import { generatePasswordWithOptions } from 'generate-password';
+import { generatePasswordWithOptions } from 'generate-password-in-client-side';
 
 const password = generatePasswordWithOptions({
   length: 12,

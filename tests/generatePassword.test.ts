@@ -9,6 +9,7 @@ describe("generatePasswordWithOptions", () => {
       useLowercase: true,
       useSymbols: true,
       excludeSimilarCharacters: false,
+      exclude: "",
     });
     expect(password).toHaveLength(10);
   });
@@ -21,6 +22,7 @@ describe("generatePasswordWithOptions", () => {
       useLowercase: false,
       useSymbols: false,
       excludeSimilarCharacters: false,
+      exclude: "",
     });
     expect(password).toMatch(/[0-9]/);
   });
@@ -33,6 +35,7 @@ describe("generatePasswordWithOptions", () => {
       useLowercase: false,
       useSymbols: false,
       excludeSimilarCharacters: false,
+      exclude: "",
     });
     expect(password).toMatch(/[A-Z]/);
   });
@@ -45,6 +48,7 @@ describe("generatePasswordWithOptions", () => {
       useLowercase: true,
       useSymbols: false,
       excludeSimilarCharacters: false,
+      exclude: "",
     });
     expect(password).toMatch(/[a-z]/);
   });
@@ -57,6 +61,7 @@ describe("generatePasswordWithOptions", () => {
       useLowercase: false,
       useSymbols: true,
       excludeSimilarCharacters: false,
+      exclude: "",
     });
     expect(password).toMatch(/[@#$%^&*()_+=<>?/|]/);
   });
@@ -69,8 +74,22 @@ describe("generatePasswordWithOptions", () => {
       useLowercase: true,
       useSymbols: true,
       excludeSimilarCharacters: true,
+      exclude: "",
     });
     expect(password).not.toMatch(/[il1Lo0O]/);
+  });
+
+  it("should exclude characters specified in the exclude string", () => {
+    const password = generatePasswordWithOptions({
+      length: 10,
+      useNumbers: true,
+      useUppercase: true,
+      useLowercase: true,
+      useSymbols: true,
+      excludeSimilarCharacters: false,
+      exclude: "a",
+    });
+    expect(password).not.toMatch(/[a]/);
   });
 
   it("should generate a password with the specified options", () => {
@@ -81,6 +100,7 @@ describe("generatePasswordWithOptions", () => {
       useLowercase: true,
       useSymbols: true,
       excludeSimilarCharacters: false,
+      exclude: "",
     });
     expect(password).toMatch(/[0-9A-Za-z@#$%^&*()_+=<>?/|]/);
   });
