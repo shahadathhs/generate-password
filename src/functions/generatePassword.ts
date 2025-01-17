@@ -1,3 +1,5 @@
+import { GeneratePasswordFunctionProps } from "../types/types";
+
 export function generatePasswordWithOptions({
   length,
   useNumbers,
@@ -6,15 +8,7 @@ export function generatePasswordWithOptions({
   useSymbols,
   excludeSimilarCharacters,
   allowSequential,
-}: {
-  length: number;
-  useNumbers: boolean;
-  useUppercase: boolean;
-  useLowercase: boolean;
-  useSymbols: boolean;
-  excludeSimilarCharacters: boolean;
-  allowSequential: boolean;
-}): string {
+}: GeneratePasswordFunctionProps): string {
   const lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
   const uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const numberChars = "0123456789";
@@ -39,8 +33,7 @@ export function generatePasswordWithOptions({
     charset = charset
       .split("")
       .filter(
-        (char) =>
-          !charset.includes(String.fromCharCode(char.charCodeAt(0) + 1))
+        (char) => !charset.includes(String.fromCharCode(char.charCodeAt(0) + 1))
       )
       .join("");
   }
