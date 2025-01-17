@@ -35,8 +35,10 @@
     "eslint": "^9.18.0",
     "eslint-plugin-import": "^2.31.0",
     "globals": "^15.14.0",
+    "husky": "^9.1.7",
     "jest": "^29.7.0",
     "jest-each": "^29.7.0",
+    "lint-staged": "^15.4.1",
     "prettier": "^3.4.2",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
@@ -58,5 +60,16 @@
     "dist",
     "README.md",
     "package.json"
-  ]
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run test"
+    }
+  },
+  "lint-staged": {
+    "*.js, *.ts, *.json, *.mjs": [
+      "npm run lint:fix",
+      "npm run format"
+    ]
+  }
 }
