@@ -6,5 +6,13 @@ tests
 
 .git
 
+.env
+.env.*
+
 .DS_Store
 .vscode
+
+tsconfig.json
+tsup.config.ts
+jest.config.js
+.gitignore
