@@ -6,7 +6,7 @@ describe('generatePassword', () => {
     expect(password).toBeDefined()
   })
 
-  it('should return a string', () => {
+  it('should return a string when generating single password', () => {
     expect(typeof generatePassword()).toBe('string')
   })
 
@@ -114,8 +114,7 @@ describe('generatePassword', () => {
     expect(password).toMatch(/[0-9A-Za-z@#$%^&*()_+=<>?/|]/)
   })
 
-
-  it('should generate multiple passwords', () => {
+  it('should generate multiple passwords as an array', () => {
     const passwords = generatePassword({
       length: 10,
       useNumbers: true,
