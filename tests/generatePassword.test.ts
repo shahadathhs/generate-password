@@ -1,6 +1,11 @@
 import { generatePassword } from '../src/functions/functions'
 
 describe('generatePassword', () => {
+  it('should generate a password with default options', () => {
+    const password = generatePassword()
+    expect(password).toBeDefined()
+  })
+
   it('should generate a password of the specified length', () => {
     const password = generatePassword({
       length: 10,
@@ -103,5 +108,21 @@ describe('generatePassword', () => {
       exclude: ''
     })
     expect(password).toMatch(/[0-9A-Za-z@#$%^&*()_+=<>?/|]/)
+  })
+
+
+  it('should generate multiple passwords', () => {
+    const passwords = generatePassword({
+      length: 10,
+      useNumbers: true,
+      useUppercase: true,
+      useLowercase: true,
+      useSymbols: true,
+      excludeSimilarCharacters: false,
+      exclude: '',
+      count: 3
+    })
+    expect(Array.isArray(passwords)).toBe(true)
+    expect(passwords.length).toBe(3)
   })
 })
