@@ -1,4 +1,4 @@
-import { generatePassword } from '../src/functions/functions'
+import { generatePassword } from '../src/functions/generate.function'
 
 describe('generatePassword', () => {
   it('should generate a password with default options', () => {

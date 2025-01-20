@@ -1,4 +1,4 @@
-import { generatePassword } from '../src/functions/functions'
+import { generatePassword } from '../src/functions/generate.function'
 import { lengthError } from '../src/utils/error.message'
 
 describe('generatePassword props validation', () => {
