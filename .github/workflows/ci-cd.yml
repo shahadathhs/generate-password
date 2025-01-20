@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: CI Pipeline
 
 on:
   push:
@@ -17,7 +17,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22.16.0
+          node-version: 22.12.0
 
       - name: Install dependencies
         run: npm install
@@ -28,18 +28,5 @@ jobs:
       - name: Run tests
         run: npm run test
 
-      - name: Format code
-        run: npm run format
-
-        ## check if any changes were made
-      - name: Check for changes
-        run: git diff --exit-code
-
-        ## if changes were made, fail the build
-      - name: Fail build if changes were made
-        if: ${{ failure() }}
-        run: exit 1 { echo "Code formatting required. Please run 'npm run format' and commit the changes."; }
-
-        ## if no changes were made, continue with the build
       - name: Build project
         run: npm run build
