@@ -6,6 +6,10 @@ describe('generatePassword', () => {
     expect(password).toBeDefined()
   })
 
+  it('should return a string', () => {
+    expect(typeof generatePassword()).toBe('string')
+  })
+
   it('should generate a password of the specified length', () => {
     const password = generatePassword({
       length: 10,
