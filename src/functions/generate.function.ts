@@ -42,11 +42,19 @@ export function generatePassword(
 
   let charset = ''
 
-  if (useLowercase) charset += lowercaseChars
-  if (useUppercase) charset += uppercaseChars
-  if (useNumbers) charset += numberChars
-  if (useSymbols) charset += symbolChars
+  const charsetOptions = [
+    { condition: useLowercase, value: lowercaseChars },
+    { condition: useUppercase, value: uppercaseChars },
+    { condition: useNumbers, value: numberChars },
+    { condition: useSymbols, value: symbolChars }
+  ]
 
+  // * Use reduce to build the charset based on conditions
+  charset = charsetOptions.reduce((acc, { condition, value }) => {
+    return condition ? acc + value : acc
+  }, '')
+
+  // * Exclude similar characters
   if (excludeSimilarCharacters) {
     charset = charset
       .split('')
@@ -54,11 +62,17 @@ export function generatePassword(
       .join('')
   }
 
+  // * Exclude characters from the exclude prop
   if (exclude) {
     charset = charset
       .split('')
       .filter(char => !exclude.includes(char))
       .join('')
+  }
+
+  // * Validate charset
+  if (charset.length === 0) {
+    throw new Error('No valid characters to generate password.')
   }
 
   const generateSinglePassword = () => {
@@ -72,14 +86,7 @@ export function generatePassword(
     return password
   }
 
-  if (count === 1) {
-    return generateSinglePassword()
-  }
+  if (count === 1) return generateSinglePassword()
 
-  const passwords = []
-  for (let i = 0; i < count; i++) {
-    passwords.push(generateSinglePassword())
-  }
-
-  return passwords.length === 1 ? passwords[0] : passwords
+  return Array.from({ length: count }, generateSinglePassword)
 }
