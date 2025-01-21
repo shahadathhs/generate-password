@@ -103,8 +103,8 @@ describe('generatePassword props validation', () => {
       )
     })
 
-    it('should throw an error if count is greater than 100', () => {
-      expect(() => generatePassword({ count: 101 })).toThrow(
+    it('should throw an error if count is greater than 10', () => {
+      expect(() => generatePassword({ count: 11 })).toThrow(
         countError.countTooLarge
       )
     })

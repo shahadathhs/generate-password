@@ -14,6 +14,16 @@ import {
 } from '../utils/error.message'
 
 export function propValidation(props: GeneratePasswordFunctionProps) {
+  // * throw error if any unwanted props are passed
+  const allProps = Object.values(PropsEnum) as string[] 
+  const propsValue = Object.keys(props)
+  const unwantedProps = propsValue.filter(prop => !allProps.includes(prop))
+
+  if (unwantedProps.length > 0) {
+    throw new Error(unwantedPropsError(unwantedProps))
+  }
+
+  // * Destructure valid props
   const {
     length,
     useNumbers,
@@ -74,14 +84,5 @@ export function propValidation(props: GeneratePasswordFunctionProps) {
   // * throw error if all boolean props are false (excludeSimilarCharacters is not included)
   if (!useNumbers && !useUppercase && !useLowercase && !useSymbols) {
     throw new Error(allOptionsFalseError)
-  }
-
-  // * throw error if any unwanted props are passed
-  const unwantedProps = Object.keys(props).filter(
-    prop => !Object.values(PropsEnum).includes(prop as PropsEnum)
-  )
-
-  if (unwantedProps.length > 0) {
-    throw new Error(unwantedPropsError(unwantedProps))
   }
 }

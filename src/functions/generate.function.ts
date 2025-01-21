@@ -2,18 +2,24 @@ import { GeneratePasswordFunctionProps } from '../types/props.types'
 
 import { propValidation } from './validation.function'
 
-export function generatePassword({
-  length = 8, // * Default to 8 characters
-  useNumbers = true, // * Default to true
-  useUppercase = true, // * Default to true
-  useLowercase = true, // * Default to true
-  useSymbols = false, // * Default to false
-  excludeSimilarCharacters = false, // * Default to false
-  exclude = '', // * Default to an empty string
-  count = 1 // * Default to generating one password
-}: GeneratePasswordFunctionProps = {}): string | string[] {
-  // * Validate the props
-  propValidation({
+export function generatePassword(
+  props: GeneratePasswordFunctionProps = {}
+): string | string[] {
+  // * Apply default values to props
+  const {
+    length = 8,
+    useNumbers = true,
+    useUppercase = true,
+    useLowercase = true,
+    useSymbols = false,
+    excludeSimilarCharacters = false,
+    exclude = '',
+    count = 1,
+    ...extraProps // * Capture any additional props that were passed
+  } = props
+
+  // * Combine all props into a single object for validation
+  const allProps = {
     length,
     useNumbers,
     useUppercase,
@@ -21,8 +27,12 @@ export function generatePassword({
     useSymbols,
     excludeSimilarCharacters,
     exclude,
-    count
-  })
+    count,
+    ...extraProps // * Pass additional props for validation
+  }
+
+  // * Validate all props, including unwanted ones
+  propValidation(allProps)
 
   const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz'
   const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
