@@ -71,33 +71,17 @@ export function propValidation(props: GeneratePasswordFunctionProps) {
     throw new Error(countError.countTooLarge)
   }
 
-  // * throw error if unwanted props are passed
-  const unwantedProps = Object.keys(props).filter(
-    key =>
-      ![
-        PropsEnum.LENGTH,
-        PropsEnum.USE_NUMBERS,
-        PropsEnum.USE_UPPERCASE,
-        PropsEnum.USE_LOWERCASE,
-        PropsEnum.USE_SYMBOLS,
-        PropsEnum.EXCLUDE_SIMILAR_CHARACTERS,
-        PropsEnum.EXCLUDE,
-        PropsEnum.COUNT
-      ].includes(key as PropsEnum)
-  )
-
-  if (unwantedProps.length) {
-    throw new Error(unwantedPropsError(unwantedProps))
+  // * throw error if all boolean props are false (excludeSimilarCharacters is not included)
+  if (!useNumbers && !useUppercase && !useLowercase && !useSymbols) {
+    throw new Error(allOptionsFalseError)
   }
 
-  // * throw error if all boolean props are false
-  if (
-    !useNumbers &&
-    !useUppercase &&
-    !useLowercase &&
-    !useSymbols &&
-    !excludeSimilarCharacters
-  ) {
-    throw new Error(allOptionsFalseError)
+  // * throw error if any unwanted props are passed
+  const unwantedProps = Object.keys(props).filter(
+    prop => !Object.values(PropsEnum).includes(prop as PropsEnum)
+  )
+
+  if (unwantedProps.length > 0) {
+    throw new Error(unwantedPropsError(unwantedProps))
   }
 }
