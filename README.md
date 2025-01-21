@@ -65,15 +65,16 @@ console.log('Generated Passwords:', passwords)
 The `generatePassword` function takes an object with the following properties:
 
 | Parameter                  | Type    | Default Value | Description                                                          |
-| -------------------------- | ------- | ------------- | -------------------------------------------------------------------- | --- |
+| -------------------------- | ------- | ------------- | -------------------------------------------------------------------- |
 | `length`                   | number  | `8`           | The length of the password to generate.                              |
 | `useNumbers`               | boolean | `true`        | Include numeric characters (0-9).                                    |
 | `useUppercase`             | boolean | `true`        | Include uppercase letters (A-Z).                                     |
 | `useLowercase`             | boolean | `true`        | Include lowercase letters (a-z).                                     |
-| `useSymbols`               | boolean | `false`       | Include symbols (@#$%^&\*()\_+=<>?/                                  | ).  |
+| `useSymbols`               | boolean | `false`       | Include symbols (@#$%^&*()_+=<>?/|).                                 |
 | `excludeSimilarCharacters` | boolean | `false`       | Exclude visually similar characters (e.g., 'i', 'l', '1', 'o', '0'). |
 | `exclude`                  | string  | `""`          | Exclude specific characters from the generated password.             |
 | `count`                    | number  | `1`           | Number of passwords to generate.                                     |
+                                   
 
 ### Example Configurations
 
@@ -85,7 +86,9 @@ The `generatePassword` function takes an object with the following properties:
      useNumbers: true,
      useUppercase: false,
      useLowercase: true,
-     useSymbols: false
+     useSymbols: false,
+     excludeSimilarCharacters: false,
+     exclude: ''
    })
    console.log(password) // Example output: "abc3d5f9"
    ```
@@ -99,26 +102,13 @@ The `generatePassword` function takes an object with the following properties:
      useUppercase: true,
      useLowercase: true,
      useSymbols: true,
-     excludeSimilarCharacters: true
+     excludeSimilarCharacters: true,
+     exclude: ''
    })
    console.log(password) // Example output: "A#kM@4p*J!h2X&b7"
    ```
 
-3. **Multiple passwords generation:**
-
-   ```typescript
-   const passwords = generatePassword({
-     length: 10,
-     useNumbers: true,
-     useUppercase: true,
-     useLowercase: true,
-     useSymbols: false,
-     count: 3
-   })
-   console.log(passwords) // Example output: ["Ab9f3D5kZ1", "J8lMn2Qk9P", "Xa9kL6o4Wb"]
-   ```
-
-4. **Password with excluded specific characters:**
+3. **Password with excluded specific characters:**
 
    ```typescript
    const password = generatePassword({
@@ -126,19 +116,60 @@ The `generatePassword` function takes an object with the following properties:
      useNumbers: true,
      useUppercase: true,
      useLowercase: true,
+     useSymbols: true,
+     excludeSimilarCharacters: true,
      exclude: 'aeiou' // Exclude vowels
    })
-   console.log(password) // Example output: "B5TnWrXb6P"
+   console.log(password) // Example output: "B5Tn%rW6!p0"
    ```
 
+4. **Generating multiple passwords:**
 
-### ***Error Handling***
-The `generatePassword` function includes enhanced error handling to ensure the generated passwords are secure and meet your requirements. If an error occurs during password generation, the function will throw an error with a descriptive message.
-Here are some common error scenarios and their corresponding error messages:
-- **Invalid Input Parameters:**
-  - **Error Message:** `Invalid input parameters. Please check the provided parameters.`
-  - **Description:** This error occurs when the provided input parameters are invalid or do not meet the required criteria.
+   ```typescript
+   const passwords = generatePassword({
+     length: 12,
+     count: 3,
+     useNumbers: true,
+     useUppercase: true,
+     useLowercase: true,
+     useSymbols: true
+   })
+   console.log(passwords) // Example output: ["X9a@lBn!r23*", "Q4pR^5kLm@7!", "Zx%8v#Tg!23$"]
+   ```
 
+### Error Handling
+
+The `generatePassword` function includes enhanced error handling to ensure the generated passwords are secure and meet your requirements. If an error occurs, a descriptive error message will be thrown.
+
+#### Common Error Messages
+
+- **Invalid Length:**
+
+  - **Error Messages:**
+    - "Invalid length. Length must be a positive number."
+    - "Invalid length. Length must be less than or equal to 50."
+
+- **Invalid Boolean Flags (useNumbers, useUppercase, useLowercase, useSymbols, excludeSimilarCharacters):**
+
+  - **Error Message:** "It must be a boolean value."
+
+- **Invalid Exclude:**
+
+  - **Error Message:** "Invalid exclude. It must be a string."
+
+- **Invalid Count:**
+
+  - **Error Messages:**
+    - "Invalid count. Count must be a positive number."
+    - "Invalid count. Count must be less than or equal to 10."
+
+- **Unwanted Properties:**
+
+  - **Error Message:**
+    - "Invalid prop(s): propName(s). Only the following options are allowed: length, useNumbers, useUppercase, useLowercase, useSymbols, excludeSimilarCharacters, exclude, count."
+
+- **All Options False:**
+  - **Error Message:** "At least one of the options must be true."
 
 ### Notes
 
@@ -149,5 +180,4 @@ Here are some common error scenarios and their corresponding error messages:
 
 ## Contributing
 
-Contributions are welcome! Feel free to open issues or submit pull requests.
-Github: https://github.com/shahadathhs/generate-password-in-client-side
+Contributions are welcome! Feel free to open issues or submit pull requests [here](https://github.com/shahadathhs/generate-password) on GitHub.
