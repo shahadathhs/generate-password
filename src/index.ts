@@ -10,3 +10,4 @@ export * from './enum/props.enum'
 
 // * Export all utils
 export * from './utils/error.message'
+export * from './utils/default.value'
