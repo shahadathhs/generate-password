@@ -229,14 +229,18 @@ The `generatePassphrase` function includes validation to ensure the options are 
 
 #### Common Error Messages
 
-- **Invalid `wordCount`:**
-  - "Invalid prop(s): wordCount. Only the following options are allowed: wordCount, separator, wordList, capitalize."
-- **Invalid `separator`:**
-  - "Invalid prop(s): separator. Only the following options are allowed: wordCount, separator, wordList, capitalize."
-- **Invalid `wordList`:**
-  - "Invalid prop(s): wordList. Only the following options are allowed: wordCount, separator, wordList, capitalize."
-- **Invalid `capitalize`:**
-  - "Invalid prop(s): capitalize. Only the following options are allowed: wordCount, separator, wordList, capitalize."
+- **Invalid `wordCount`:**  
+  - "Invalid wordCount. It must be a positive number between 1 and 100."
+  
+- **Invalid `separator`:**  
+  - "Invalid separator. It must be a string."
+
+- **Invalid `wordList`:**  
+  - "Invalid wordList. It must be a non-empty array."
+
+- **Invalid `capitalize`:**  
+  - "Invalid capitalize. It must be a boolean value."
+
 
 ### Notes on Passphrase Generation
 

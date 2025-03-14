@@ -1,6 +1,6 @@
 {
   "name": "generate-password-in-client-side",
-  "version": "0.0.4",
+  "version": "0.0.5-alpha",
   "private": false,
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -21,19 +21,20 @@
   },
   "keywords": [
     "password",
+    "passphrase",
     "generator",
-    "generate",
     "password generator",
-    "secure-password",
-    "generate password in client side",
-    "generate password in browser",
-    "client-side-password-generator",
-    "browser-password-generator",
-    "simple-password-generator"
+    "passphrase generator",
+    "secure password",
+    "secure passphrase",
+    "generate password",
+    "generate passphrase",
+    "client-side generator",
+    "browser generator"
   ],
   "author": "shahadathhs",
   "license": "MIT",
-  "description": "This is a simple password generator. It is suitable for generating passwords for applications, websites, and other purposes. Both in the browser and in the Node.js environment.",
+  "description": "A lightweight and secure password and passphrase generator for JavaScript and TypeScript. Suitable for generating strong passwords and memorable passphrases for applications, websites, and other purposes, both in the browser and in Node.js environments.",
   "devDependencies": {
     "@eslint/js": "^9.18.0",
     "@types/jest": "^29.5.14",
