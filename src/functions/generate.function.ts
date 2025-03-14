@@ -1,6 +1,6 @@
 import { GeneratePasswordFunctionProps } from '../types/props.types'
 
-import { propValidation } from './validation.function'
+import { generatePasswordPropValidation } from './validation.function'
 
 export function generatePassword(
   props: GeneratePasswordFunctionProps = {}
@@ -32,7 +32,7 @@ export function generatePassword(
   }
 
   // * Validate all props, including unwanted ones
-  propValidation(allProps)
+  generatePasswordPropValidation(allProps)
 
   const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz'
   const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'

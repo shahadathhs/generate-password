@@ -1,4 +1,4 @@
-export enum PropsEnum {
+export enum GeneratePasswordPropsEnum {
   LENGTH = 'length',
   USE_NUMBERS = 'useNumbers',
   USE_UPPERCASE = 'useUppercase',

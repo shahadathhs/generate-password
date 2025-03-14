@@ -1,16 +1,18 @@
-import { PropsEnum } from '../enum/props.enum'
+import { GeneratePasswordPropsEnum } from '../enum/props.enum'
 
 export type GeneratePasswordFunctionProps = {
-  [key in PropsEnum]?: key extends PropsEnum.LENGTH | PropsEnum.COUNT
+  [key in GeneratePasswordPropsEnum]?: key extends
+    | GeneratePasswordPropsEnum.LENGTH
+    | GeneratePasswordPropsEnum.COUNT
     ? number
-    : key extends PropsEnum.EXCLUDE
+    : key extends GeneratePasswordPropsEnum.EXCLUDE
       ? string
       : key extends
-            | PropsEnum.USE_NUMBERS
-            | PropsEnum.USE_UPPERCASE
-            | PropsEnum.USE_LOWERCASE
-            | PropsEnum.USE_SYMBOLS
-            | PropsEnum.EXCLUDE_SIMILAR_CHARACTERS
+            | GeneratePasswordPropsEnum.USE_NUMBERS
+            | GeneratePasswordPropsEnum.USE_UPPERCASE
+            | GeneratePasswordPropsEnum.USE_LOWERCASE
+            | GeneratePasswordPropsEnum.USE_SYMBOLS
+            | GeneratePasswordPropsEnum.EXCLUDE_SIMILAR_CHARACTERS
         ? boolean
         : never
 }

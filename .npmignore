@@ -19,3 +19,5 @@ jest.config.ts
 
 .prettier.json
 eslint.config.js
+
+LICENSE

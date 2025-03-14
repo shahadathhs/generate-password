@@ -1,4 +1,4 @@
-import { PropsEnum } from '../enum/props.enum'
+import { GeneratePasswordPropsEnum } from '../enum/props.enum'
 import { GeneratePasswordFunctionProps } from '../types/props.types'
 import {
   allOptionsFalseError,
@@ -13,9 +13,11 @@ import {
   useUppercaseError
 } from '../utils/error.message'
 
-const allValidProps = Object.values(PropsEnum) as string[]
+const allValidProps = Object.values(GeneratePasswordPropsEnum) as string[]
 
-export function propValidation(props: GeneratePasswordFunctionProps) {
+export function generatePasswordPropValidation(
+  props: GeneratePasswordFunctionProps
+) {
   const propsValue = Object.keys(props)
   const unwantedProps = propsValue.filter(prop => !allValidProps.includes(prop))
 
