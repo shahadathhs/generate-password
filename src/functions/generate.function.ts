@@ -1,6 +1,13 @@
-import { GeneratePasswordFunctionProps } from '../types/props.types'
+import {
+  GeneratePassphraseFunctionProps,
+  GeneratePasswordFunctionProps
+} from '../types/props.types'
+import { defaultWordList } from '../utils/default.value'
 
-import { generatePasswordPropValidation } from './validation.function'
+import {
+  generatePassphrasePropValidation,
+  generatePasswordPropValidation
+} from './validation.function'
 
 export function generatePassword(
   props: GeneratePasswordFunctionProps = {}
@@ -89,4 +96,38 @@ export function generatePassword(
   if (count === 1) return generateSinglePassword()
 
   return Array.from({ length: count }, generateSinglePassword)
+}
+
+export function generatePassphrase(
+  options: GeneratePassphraseFunctionProps = {}
+): string {
+  const {
+    wordCount = 4,
+    separator = ' ',
+    wordList = defaultWordList,
+    capitalize = false
+  } = options
+
+  // * Validate passphrase-specific properties
+  generatePassphrasePropValidation(options)
+
+  // * Function to get a secure random index
+  const getSecureRandomIndex = (max: number): number => {
+    const array = new Uint32Array(1)
+    crypto.getRandomValues(array)
+    return array[0] % max
+  }
+
+  // * Generate the passphrase by selecting random words from the word list
+  const passphraseWords: string[] = []
+  for (let i = 0; i < wordCount; i++) {
+    const randomIndex = getSecureRandomIndex(wordList.length)
+    let word = wordList[randomIndex]
+    if (capitalize) {
+      word = word.charAt(0).toUpperCase() + word.slice(1)
+    }
+    passphraseWords.push(word)
+  }
+
+  return passphraseWords.join(separator)
 }
