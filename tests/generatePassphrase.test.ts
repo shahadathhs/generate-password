@@ -1,4 +1,5 @@
 import { generatePassphrase } from '../src/functions/generate.function'
+import { passphraseErrors } from '../src/utils/error.message'
 
 describe('GENERATE PASSPHRASE FUNCTION', () => {
   describe('generatePassphrase function tests', () => {
@@ -71,49 +72,45 @@ describe('GENERATE PASSPHRASE FUNCTION', () => {
     })
   })
 
-  // describe('generatePassphrase prop validation tests', () => {
-  //   it('should throw an error if wordCount is not a number', () => {
-  //     // @ts-expect-error Ignore the error to test the validation
-  //     expect(() => generatePassphrase({ wordCount: 'invalid' })).toThrow(
-  //       new Error(
-  //         'Invalid prop(s): wordCount. Only the following options are allowed: wordCount, separator, wordList, capitalize.'
-  //       )
-  //     )
-  //   })
+  describe('generatePassphrase prop validation tests', () => {
+    it('should throw an error if wordCount is not a number', () => {
+      // @ts-expect-error Ignore the error to test the validation
+      expect(() => generatePassphrase({ wordCount: 'invalid' })).toThrow(
+        new Error(passphraseErrors.invalidWordCount)
+      )
+    })
 
-  //   it('should throw an error if separator is not a string', () => {
-  //     // @ts-expect-error Ignore the error to test the validation
-  //     expect(() => generatePassphrase({ separator: 123 })).toThrow(
-  //       new Error(
-  //         'Invalid prop(s): separator. Only the following options are allowed: wordCount, separator, wordList, capitalize.'
-  //       )
-  //     )
-  //   })
+    it('should throw an error if separator is not a string', () => {
+      // @ts-expect-error Ignore the error to test the validation
+      expect(() => generatePassphrase({ separator: 123 })).toThrow(
+        new Error(passphraseErrors.invalidSeparator)
+      )
+    })
 
-  //   it('should throw an error if wordList is not an array', () => {
-  //     // @ts-expect-error Ignore the error to test the validation
-  //     expect(() => generatePassphrase({ wordList: 'invalid' })).toThrow(
-  //       new Error(
-  //         'Invalid prop(s): wordList. Only the following options are allowed: wordCount, separator, wordList, capitalize.'
-  //       )
-  //     )
-  //   })
+    it('should throw an error if wordList is not an array', () => {
+      // @ts-expect-error Ignore the error to test the validation
+      expect(() => generatePassphrase({ wordList: 'invalid' })).toThrow(
+        new Error(passphraseErrors.emptyWordList)
+      )
+    })
 
-  //   it('should throw an error if capitalize is not a boolean', () => {
-  //     // @ts-expect-error Ignore the error to test the validation
-  //     expect(() => generatePassphrase({ capitalize: 'invalid' })).toThrow(
-  //       new Error(
-  //         'Invalid prop(s): capitalize. Only the following options are allowed: wordCount, separator, wordList, capitalize.'
-  //       )
-  //     )
-  //   })
+    it('should throw an error if capitalize is not a boolean', () => {
+      // @ts-expect-error Ignore the error to test the validation
+      expect(() => generatePassphrase({ capitalize: 'invalid' })).toThrow(
+        new Error(passphraseErrors.invalidCapitalize)
+      )
+    })
 
-  //   it('should throw an error if wordCount is less than 1', () => {
-  //     expect(() => generatePassphrase({ wordCount: 0 })).toThrow(
-  //       new Error(
-  //         'Invalid prop(s): wordCount. Only the following options are allowed: wordCount, separator, wordList, capitalize.'
-  //       )
-  //     )
-  //   })
-  // })
+    it('should throw an error if wordCount is less than 1', () => {
+      expect(() => generatePassphrase({ wordCount: 0 })).toThrow(
+        new Error(passphraseErrors.invalidWordCount)
+      )
+    })
+
+    it('should throw an error if wordCount is greater than 100', () => {
+      expect(() => generatePassphrase({ wordCount: 101 })).toThrow(
+        new Error(passphraseErrors.invalidWordCount)
+      )
+    })
+  })
 })

@@ -100,7 +100,7 @@ export function generatePassphrasePropValidation(
 
   if (
     wordCount !== undefined &&
-    (typeof wordCount !== 'number' || wordCount < 1)
+    (typeof wordCount !== 'number' || wordCount < 1 || wordCount > 100)
   ) {
     throw new Error(passphraseErrors.invalidWordCount)
   }
